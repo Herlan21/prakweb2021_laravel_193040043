@@ -22,7 +22,7 @@
             <article class="my-3 fs-5">
                 {!! $post->body !!}
             </article>
-            <a href="/posts" class="d-block mt-2 py-5 pt-2">Back to Posts</a>
+            
         </div>
     </div>
 </div>
