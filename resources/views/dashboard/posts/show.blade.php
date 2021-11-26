@@ -7,12 +7,14 @@
             <h1 class="mb-3">{{ $post->title }}</h1>
 
            <a href="/dashboard/posts" class="btn btn-warning"><span data-feather="arrow-left"></span> Back To My Post</a>
-           <a href="" class="btn btn-success"><span data-feather="plus"></span> Edit</a>
-           <a href="" class="btn btn-danger"><span data-feather="x"></span> Delete</a>
-                in
-                <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">
-                    {{ $post->category->name }}</a>
-            </p>
+           <a href="/dashboar/posts/{{ $post->slug }}/edit" class="btn btn-success"><span data-feather="plus"></span> Edit</a>
+           
+           <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline mx-3">
+            @method('delete')
+            @csrf
+            <button class="btn btn-danger border-0" onclick="return confirm('Are You Sure?')"><span data-feather="x"></span>Delete</button>
+            </form>
+                
 
             <img
                 src="https://source.unsplash.com/1200x400?{{ $post->category->name }}"

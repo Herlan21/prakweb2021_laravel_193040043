@@ -7,7 +7,7 @@
 </div>
 
 @if(session()->has('success'))
-<div class="alert alert-success" role="alert">
+<div class="alert alert-success col-lg-8" role="alert">
   {{ session('success') }}
 </div>
 @endif
@@ -20,7 +20,7 @@
           <th scope="col">#</th>
           <th scope="col">Title</th>
           <th scope="col">Category</th>
-          <th scope="col">Action</th>
+          <th scope="col" class="text-center">Action</th>
           
         </tr>
       </thead>
@@ -33,9 +33,14 @@
   <td>{{ $post->title }}</td>
   <td>{{ $post->category->name }}</td>
   <td>
-    <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-warning"><span data-feather="more-vertical"></span></a>
-    <a href="" class="badge bg-success"><span data-feather="plus"></span></a>
-    <a href="" class="badge bg-danger"><span data-feather="x"></span></a>
+    <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-warning mx-1"><span data-feather="more-vertical"></span></a>
+    <a href="/dashboard/posts/{{ $post->slug }}/edit  " class="badge bg-success"><span data-feather="plus"></span></a>
+    
+    <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline mx-3">
+      @method('delete')
+      @csrf
+      <button class="badge bg-danger border-0" onclick="return confirm('Are You Sure?')"><span data-feather="x"></span></button>
+    </form>
   </td>
   
   
