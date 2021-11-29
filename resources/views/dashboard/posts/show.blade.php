@@ -15,11 +15,20 @@
             <button class="btn btn-danger border-0" onclick="return confirm('Are You Sure?')"><span data-feather="x"></span>Delete</button>
             </form>
                 
-
-            <img
-                src="https://source.unsplash.com/1200x400?{{ $post->category->name }}"
+            @if ($post->image)
+              <div class="max-height:350px; overflow:hidden;">
+                <img src="{{ asset('storage/' . $post->image) }}"
                 alt="{{ $post->category->name }}"
                 class="img-fluid mt-3">
+              </div>
+            
+            @else
+            
+            <img src="https://source.unsplash.com/1200x400?{{ $post->category->name }}"
+                alt="{{ $post->category->name }}"
+                class="img-fluid mt-3">
+                
+            @endif
 
             <article class="my-3 fs-5">
                 {!! $post->body !!}
